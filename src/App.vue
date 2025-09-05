@@ -1,11 +1,12 @@
-<script setup></script>
+<script setup>
+import CEHeader from '@/components/CEHeader.vue'
+import CEMainWrapper from '@/components/CEMainWrapper.vue'
+import CEExchangeForm from '@/components/CEExchangeForm.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <CEHeader />
+  <CEMainWrapper>
+    <CEExchangeForm />
+  </CEMainWrapper>
 </template>
-
-<style scoped></style>
