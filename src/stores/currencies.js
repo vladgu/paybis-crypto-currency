@@ -6,6 +6,7 @@ const API_URL =
 
 export const useCurrenciesStore = defineStore('currencies', () => {
   const currencies = ref(0)
+  const currenciesHistory = ref([])
   const isLoading = ref(false)
 
   const fetchCurrencies = async () => {
@@ -15,11 +16,18 @@ export const useCurrenciesStore = defineStore('currencies', () => {
       const response = await fetch(API_URL)
       const data = await response.json()
 
+      currenciesHistory.value.push({
+        timestamp: Date.now(),
+        value: data,
+      })
+
       currencies.value = data
     } catch (e) {
       //   TODO: handle errors
+    } finally {
+      isLoading.value = false
     }
   }
 
-  return { currencies, isLoading, fetchCurrencies }
+  return { currencies, currenciesHistory, isLoading, fetchCurrencies }
 })

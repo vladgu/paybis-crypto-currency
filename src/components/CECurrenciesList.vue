@@ -1,9 +1,11 @@
 <script setup>
 import { BCard } from 'bootstrap-vue-next'
 import { useCurrenciesStore } from '@/stores/currencies.js'
+import { useTimerStore } from '@/stores/timer.js'
 import CECurrencyListItem from '@/components/CECurrencyListItem.vue'
 
 const currenciesStore = useCurrenciesStore()
+const timerStore = useTimerStore()
 </script>
 
 <template>
@@ -13,6 +15,11 @@ const currenciesStore = useCurrenciesStore()
       :currency-name="currencyName"
       :currency-price="currenciesStore.currencies?.[currencyName]?.usd"
     />
-    <template #footer> Rates will update in {{}} </template>
+    <template #footer>
+      <span>
+        Rates will update in
+        <i>{{ timerStore.formattedTime }}</i>
+      </span>
+    </template>
   </b-card>
 </template>
