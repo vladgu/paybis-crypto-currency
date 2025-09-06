@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { ApiError } from '@/utils/errors.js'
 
@@ -25,9 +25,12 @@ export const useCurrenciesStore = defineStore('currencies', () => {
       })
 
       currencies.value = data
-    } catch (e) {
+    } catch (error) {
       isError.value = true
-      throw new ApiError('Failed to fetch currencies', 'FETCH_CURRENCIES_ERROR')
+      throw new ApiError(
+        `Failed to fetch currencies with message: ${error.message}`,
+        'FETCH_CURRENCIES_ERROR',
+      )
     } finally {
       isLoading.value = false
     }

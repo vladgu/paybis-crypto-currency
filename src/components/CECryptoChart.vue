@@ -79,11 +79,12 @@ const option = computed(() => ({
 </script>
 
 <template>
-  <VChart ref="chartRef" :option="option" autoresize class="h-80 w-full" />
+  <VChart ref="chartRef" :option="option" autoresize class="exchange-chart" />
 </template>
 
 <style scoped>
-.h-80 {
-  height: 20rem; /* ~320px */
+.exchange-chart {
+  min-height: 300px;
+  height: 50vh;
 }
 </style>

@@ -28,5 +28,3 @@ const update = (val) => {
     <CECryptoChart :points="currenciesHistory" :coins="currenciesList" />
   </CEModal>
 </template>
-
-<style scoped></style>

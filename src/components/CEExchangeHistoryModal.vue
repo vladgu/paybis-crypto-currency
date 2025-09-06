@@ -27,5 +27,3 @@ const update = (val) => {
     </div>
   </CEModal>
 </template>
-
-<style scoped></style>
