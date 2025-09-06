@@ -1,8 +1,8 @@
 <script setup>
+import { onMounted, onUnmounted } from 'vue'
 import { BCol, BContainer, BRow } from 'bootstrap-vue-next'
 import { useCurrenciesStore } from '@/stores/currencies.js'
 import { useTimerStore } from '@/stores/timer.js'
-import { onMounted, onUnmounted } from 'vue'
 
 const currenciesStore = useCurrenciesStore()
 const timer = useTimerStore()

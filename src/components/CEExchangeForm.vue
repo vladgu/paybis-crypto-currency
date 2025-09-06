@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { BButton, BCard, BCol, BRow, BFormSelect, BFormInput, BTooltip } from 'bootstrap-vue-next'
+import { BButton, BCard, BCol, BRow, BFormSelect, BFormInput, useToast } from 'bootstrap-vue-next'
 import { useTimerStore } from '@/stores/timer.js'
 import { useCurrenciesStore } from '@/stores/currencies.js'
 import { capitalizeString } from '@/utils/formatStrings.js'
@@ -9,6 +9,7 @@ import CEExchangeHistoryModal from '@/components/CEExchangeHistoryModal.vue'
 
 const currenciesStore = useCurrenciesStore()
 const timerStore = useTimerStore()
+const { create } = useToast()
 
 const currenciesList = computed(() => Object.keys(currenciesStore.currencies))
 
@@ -51,6 +52,12 @@ const onExchange = () => {
   })
 
   resetForm()
+
+  create({
+    title: 'Success',
+    body: 'Exchange was successful',
+    variant: 'success',
+  })
 }
 
 const modalShown = ref(false)
@@ -101,9 +108,9 @@ const modalShown = ref(false)
         <b-button
           class="w-100"
           variant="success"
-          @click="onExchange"
           :disabled="exchangeDisabled"
           :loading="currenciesStore.isLoading"
+          @click="onExchange"
         >
           Exchange
         </b-button>

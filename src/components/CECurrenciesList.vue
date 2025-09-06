@@ -27,6 +27,7 @@ const modalShown = ref(false)
       </template>
       <CECurrencyListItem
         v-for="currencyName in currenciesList"
+        :key="currencyName"
         :currency-name="currencyName"
         :currency-price="currenciesStore.currencies?.[currencyName]?.usd"
       />

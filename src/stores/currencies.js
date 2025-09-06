@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { ApiError } from '@/utils/errors.js'
 
 const API_URL =
   'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,solana&vs_currencies=usd'
@@ -24,7 +25,7 @@ export const useCurrenciesStore = defineStore('currencies', () => {
 
       currencies.value = data
     } catch (e) {
-      //   TODO: handle errors
+      throw new ApiError('Failed to fetch currencies', 'FETCH_CURRENCIES_ERROR')
     } finally {
       isLoading.value = false
     }
