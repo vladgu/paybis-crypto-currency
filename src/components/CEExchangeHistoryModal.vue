@@ -1,5 +1,5 @@
 <script setup>
-import CEModal from '@/ui-kit/CEModal.vue'
+import CEModal from '@/components/ui-kit/CEModal.vue'
 import { formatDate } from '@/utils/formatDate.js'
 
 defineProps({

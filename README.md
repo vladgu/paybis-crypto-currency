@@ -34,8 +34,8 @@ npm run build
 npm run lint
 ```
 ## Project Structure
-- **/src/ui-kit**: Reusable UI components
 - **/src/components**: Vue components for the UI
+- **/src/components/ui-kit**: Reusable UI components
 - **/src/stores**: Pinia stores for state management
 - **/src/utils**: Utility functions for formatting and error handling
 
