@@ -8,11 +8,11 @@ export const useTimerStore = defineStore('timer', () => {
   const interval = ref(null)
 
   const formattedTime = computed(() => {
-    const m = Math.floor(remaining.value / 60)
+    const minutes = Math.floor(remaining.value / 60)
       .toString()
       .padStart(2, '0')
-    const s = (remaining.value % 60).toString().padStart(2, '0')
-    return `${m}:${s}`
+    const seconds = (remaining.value % 60).toString().padStart(2, '0')
+    return `${minutes}:${seconds}`
   })
 
   const start = (callback) => {

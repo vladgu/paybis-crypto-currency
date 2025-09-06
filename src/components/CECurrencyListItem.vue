@@ -1,5 +1,5 @@
 <script setup>
-import formatPrices from '@/utils/formatPrices.js'
+import { formatPrices } from '@/utils/formatPrices.js'
 
 defineProps({
   currencyName: {
