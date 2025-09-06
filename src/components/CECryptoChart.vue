@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, nextTick, ref, onMounted } from 'vue'
 import VChart from 'vue-echarts'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
@@ -30,6 +30,17 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+})
+
+const chartRef = ref(null)
+
+onMounted(() => {
+  nextTick(() => {
+    // Force chart resize when component is mounted and DOM is ready
+    if (chartRef.value) {
+      chartRef.value.resize()
+    }
+  })
 })
 
 const seriesData = computed(() => {
@@ -68,7 +79,7 @@ const option = computed(() => ({
 </script>
 
 <template>
-  <VChart :option="option" autoresize class="h-80 w-full" />
+  <VChart ref="chartRef" :option="option" autoresize class="h-80 w-full" />
 </template>
 
 <style scoped>

@@ -18,13 +18,22 @@ onUnmounted(() => {
 
 <template>
   <b-container tag="main">
-    <b-row class="my-md-4 my-2">
-      <b-col md="6" class="mb-md-0 mb-2">
-        <slot name="left-side"></slot>
-      </b-col>
-      <b-col md="6" class="mb-md-0 mb-2">
-        <slot name="right-side"></slot>
-      </b-col>
-    </b-row>
+    <template v-if="currenciesStore.isError">
+      <b-row class="my-md-4 my-2">
+        <b-col class="text-center">
+          Error occurred while fetching currencies:( Please try again later.
+        </b-col>
+      </b-row>
+    </template>
+    <template v-else>
+      <b-row class="my-md-4 my-2">
+        <b-col md="6" class="mb-md-0 mb-2">
+          <slot name="left-side"></slot>
+        </b-col>
+        <b-col md="6" class="mb-md-0 mb-2">
+          <slot name="right-side"></slot>
+        </b-col>
+      </b-row>
+    </template>
   </b-container>
 </template>

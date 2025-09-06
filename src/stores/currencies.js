@@ -10,6 +10,7 @@ export const useCurrenciesStore = defineStore('currencies', () => {
   const currenciesHistory = ref([])
   const exchangesHistory = ref([])
   const isLoading = ref(false)
+  const isError = ref(false)
 
   const fetchCurrencies = async () => {
     isLoading.value = true
@@ -25,6 +26,7 @@ export const useCurrenciesStore = defineStore('currencies', () => {
 
       currencies.value = data
     } catch (e) {
+      isError.value = true
       throw new ApiError('Failed to fetch currencies', 'FETCH_CURRENCIES_ERROR')
     } finally {
       isLoading.value = false
@@ -39,6 +41,7 @@ export const useCurrenciesStore = defineStore('currencies', () => {
     currencies,
     currenciesHistory,
     isLoading,
+    isError,
     fetchCurrencies,
     exchangesHistory,
     saveExchange,

@@ -20,6 +20,7 @@ const close = () => emit('update:modelValue', false)
   <b-modal
     :visible="props.modelValue"
     :title="title"
+    lazy
     centered
     no-footer
     body-scrolling
